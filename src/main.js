@@ -1,4 +1,4 @@
-import './style.css'
+import '../styles/style.css'
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -82,11 +82,11 @@ function addStar() {
 Array(200).fill().forEach(addStar);
 
 // add a background image
-const spaceTexture = new THREE.TextureLoader().load('background.jpg');
+const spaceTexture = new THREE.TextureLoader().load('../images/background.jpg');
 scene.background = spaceTexture;
 
 // add a texture for yourself, map texture to object
-const frankTexture = new THREE.TextureLoader().load('frank.jpg');
+const frankTexture = new THREE.TextureLoader().load('../images/frank.jpg');
 const frank = new THREE.Mesh(
   new THREE.BoxGeometry(3, 3, 3),
   new THREE.MeshBasicMaterial({map: frankTexture}),
@@ -94,8 +94,8 @@ const frank = new THREE.Mesh(
 scene.add(frank);
 
 // add moon texture sphere
-const moonTexture = new THREE.TextureLoader().load('moon.jpg');
-const normalTexture = new THREE.TextureLoader().load('normalMoon.png');
+const moonTexture = new THREE.TextureLoader().load('../images/moon.jpg');
+const normalTexture = new THREE.TextureLoader().load('../images/normalMoon.png');
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
