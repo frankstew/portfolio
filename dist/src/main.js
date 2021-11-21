@@ -67,6 +67,7 @@ scene.add(ambientLight);
 // scene.add(lightHelper, gridHelper);
 
 const controls = new OrbitControls(camera, renderer.domElement);
+scene.add(controls);
 
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
