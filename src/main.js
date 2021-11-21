@@ -1,5 +1,8 @@
 import '../styles/style.css'
-
+import backgroundImgUrl from '../images/background.jpg';
+import frankImgUrl from '../images/frank.jpg';
+import moonImgURL from '../images/moon.jpg';
+import normalMoonImgUrl from '../images/normalMoon.png';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GreaterEqualDepth } from 'three';
@@ -83,11 +86,11 @@ function addStar() {
 Array(200).fill().forEach(addStar);
 
 // add a background image
-const spaceTexture = new THREE.TextureLoader().load('../images/background.jpg');
+const spaceTexture = new THREE.TextureLoader().load(backgroundImgUrl);
 scene.background = spaceTexture;
 
 // add a texture for yourself, map texture to object
-const frankTexture = new THREE.TextureLoader().load('../images/frank.jpg');
+const frankTexture = new THREE.TextureLoader().load(frankImgUrl);
 const frank = new THREE.Mesh(
   new THREE.BoxGeometry(3, 3, 3),
   new THREE.MeshBasicMaterial({map: frankTexture}),
@@ -95,8 +98,8 @@ const frank = new THREE.Mesh(
 scene.add(frank);
 
 // add moon texture sphere
-const moonTexture = new THREE.TextureLoader().load('../images/moon.jpg');
-const normalTexture = new THREE.TextureLoader().load('../images/normalMoon.png');
+const moonTexture = new THREE.TextureLoader().load(moonImgURL);
+const normalTexture = new THREE.TextureLoader().load(normalMoonImgUrl);
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
