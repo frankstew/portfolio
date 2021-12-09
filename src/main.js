@@ -1,58 +1,78 @@
+//todo: info & resume link (hamburger menu??)
 import '../styles/style.css'
-import backgroundImgUrl from '../images/background.jpg';
-import frankImgUrl from '../images/frank.jpg';
-import moonImgURL from '../images/moon.jpg';
-import normalMoonImgUrl from '../images/normalMoon.png';
+import Planet from './planetModel.js'
+import moonImgURL from '../images/Planets/Moon/Moon/moon.jpg';
+import normalMoonImgUrl from '../images/Planets/Moon/Moon/normalMoon.png';
+
+import alienFleshURL from '../images/Planets/Alien_Flesh_002/Alien Flesh 002/Alien_Flesh_002_COLOR.jpg';
+import normalAlienFlesh from '../images/Planets/Alien_Flesh_002/Alien Flesh 002/Alien_Flesh_002_NRM.jpg';
+
+import blueIceURL from '../images/Planets/Blue_Ice_001/Blue_Ice_001_SD/Blue_Ice_001_COLOR.jpg';
+import normalBlueIce from '../images/Planets/Blue_Ice_001/Blue_Ice_001_SD/Blue_Ice_001_NORM.jpg';
+
+import encrustedGemURL from '../images/Planets/Encrusted_Gems_002/Encrusted_Gems_002_SD/Encrusted_Gems_002_COLOR.jpg';
+import normalEncrustedGem from '../images/Planets/Encrusted_Gems_002/Encrusted_Gems_002_SD/Encrusted_Gems_002_NORM.jpg';
+
+import jungleFloorURL from '../images/Planets/Jungle_Floor_001/Jungle_Floor_001_SD/Jungle_Floor_001_basecolor.jpg';
+import normalJungleFloor from '../images/Planets/Jungle_Floor_001/Jungle_Floor_001_SD/Jungle_Floor_001_normal.jpg';
+
+import lavaURL from '../images/Planets/Lava_006/Lava_006_SD/Lava_006_basecolor.jpg';
+import normalLava from '../images/Planets/Lava_006/Lava_006_SD/Lava_006_normal.jpg';
+
+import rockURL from '../images/Planets/Rock_038/Rock_038_SD/Rock_038_basecolor.jpg';
+import normalRock from '../images/Planets/Rock_038/Rock_038_SD/Rock_038_normal.jpg';
+
+import seaRockURL from '../images/Planets/Sea_Rock_001/Sea_Rock_001_SD/Sea_Rock_001_BaseColor.jpg';
+import normalSeaRock from '../images/Planets/Sea_Rock_001/Sea_Rock_001_SD/Sea_Rock_001_Normal.jpg';
+
+import sunURL from '../images/Planets/Sun/Sun/Sun.jpg';
+
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { GreaterEqualDepth } from 'three';
 
-//scene
+// #region scene
 const scene = new THREE.Scene();
+//#endregion
 
 
-
-
-
-
-
-
-//camera
+// #region camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+//#endregion
 
 
 
-
-//renderer
+// #region renderer
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#background'),
 });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
+camera.position.setZ(100);
 
 renderer.render(scene, camera);
+//#endregion
 
-// object: geometry, material, mesh
+//#region torus
 //vectors defining object
-const geometry = new THREE.TorusGeometry(10, 2, 16, 100);
-//basic, so no light source needed
-// const material = new THREE.MeshBasicMaterial({
-//   color: 0xFF6347,
-//   wireframe: true
-// });
-// standard material, needs light to show it
-const material = new THREE.MeshStandardMaterial({
-  color: 0xFF6347,
-});
-//create mesh which gets added to scene
-const torus = new THREE.Mesh(geometry, material);
-scene.add(torus);
+//const geometry = new THREE.TorusGeometry(10, 2, 16, 100);
+////basic, so no light source needed
+//// const material = new THREE.MeshBasicMaterial({
+////   color: 0xFF6347,
+////   wireframe: true
+//// });
+//// standard material, needs light to show it
+//const material = new THREE.MeshStandardMaterial({
+//  color: 0xFF6347,
+//});
+////create mesh which gets added to scene
+//const torus = new THREE.Mesh(geometry, material);
+//scene.add(torus);
+//#endregion
 
 // pointlight its a light, from a point
-const pointLight = new THREE.PointLight(0xffffff);
-pointLight.position.set(5,5,5);
-scene.add(pointLight);
+//const pointLight = new THREE.PointLight(0xffffff);
+//pointLight.position.set(5,5,5);
+//scene.add(pointLight);
 
 //ambient light
 const ambientLight = new THREE.AmbientLight(0xffffff);
@@ -61,67 +81,101 @@ scene.add(ambientLight);
 
 //light helpers
 
-//pointlioght helper shows us where a point light is
+//pointlight helper shows us where a point light is
 // const lightHelper = new THREE.PointLightHelper(pointLight);
 
 // // grid helper inserts a grid on the screen
 // const gridHelper = new THREE.GridHelper(200, 50);
 
 // scene.add(lightHelper, gridHelper);
-
+// todo: not working??
 const controls = new OrbitControls(camera, renderer.domElement);
 scene.add(controls);
 
-function addStar() {
-  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial( {color: 0xffffff});
-  const star = new THREE.Mesh(geometry, material);
-
-  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
-
-  star.position.set(x, y, z);
-  scene.add(star);
+//#region stars
+// todo: change to points and far away
+function addStars() {
+  const starGeometry = new THREE.BufferGeometry();
+  const starMaterial = new THREE.PointsMaterial({
+    color: 0xffffff
+  });
+  var starVertices = createStarVertices();
+  starGeometry.setAttribute(
+    'position',
+    new THREE.Float32BufferAttribute(starVertices, 3)
+    );
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
 }
 
-Array(200).fill().forEach(addStar);
+// todo: fix stars bunching at poles
+function createStarVertices() {
+  const maxRadius = 1000;
+  const verts = [];
+  for (let i = 0; i < 1200; i++) {
+    var radius = randomNum(3 * maxRadius / 4, maxRadius);
+    var theta = randomNum(0, 2 * Math.PI);
+    var phi = randomNum(0, Math.PI);
+    // switch y and z so that the bunched poles are at the top and bottom on load, instead of being immediately visible
+    const x = radius * Math.sin(phi) * Math.cos(theta);
+    const z = radius * Math.sin(phi) * Math.sin(theta) + 500;
+    const y = radius * Math.cos(phi);
+    verts.push(x, y, z);
+  }
+  return verts;
+}
+addStars();
+//#endregion
+
 
 // add a background image
-const spaceTexture = new THREE.TextureLoader().load(backgroundImgUrl);
-scene.background = spaceTexture;
+//const spaceTexture = new THREE.TextureLoader().load(backgroundImgUrl);
+//scene.background = spaceTexture;
 
-// add a texture for yourself, map texture to object
-const frankTexture = new THREE.TextureLoader().load(frankImgUrl);
-const frank = new THREE.Mesh(
-  new THREE.BoxGeometry(3, 3, 3),
-  new THREE.MeshBasicMaterial({map: frankTexture}),
-);
-scene.add(frank);
-
-// add moon texture sphere
-const moonTexture = new THREE.TextureLoader().load(moonImgURL);
-const normalTexture = new THREE.TextureLoader().load(normalMoonImgUrl);
-
-const moon = new THREE.Mesh(
-  new THREE.SphereGeometry(3, 32, 32),
-  new THREE.MeshStandardMaterial( {
-    map: moonTexture,
-    normalMap: normalTexture,
-  })
-);
-scene.add(moon);
-moon.position.z = 30;
-moon.position.setX(-10);
+//#region frankimg
+//// add a texture for yourself, map texture to object
+//const frankTexture = new THREE.TextureLoader().load(frankImgUrl);
+//const frank = new THREE.Mesh(
+//  new THREE.BoxGeometry(3, 3, 3),
+//  new THREE.MeshBasicMaterial({map: frankTexture}),
+//);
+//scene.add(frank);
+//#endregion
 
 
+//#region planets
+
+function randomNum(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+// todo: distance/sizes adjusting
+var alienFlesh = new Planet(alienFleshURL, normalAlienFlesh, [randomNum(2, 10), 32, 32], [randomNum(280, 290), randomNum(0, 2 * Math.PI)], 0.01, [0, 0, 1], 0.005, -1);
+scene.add(alienFlesh.planetBody);
+const blueIce = new Planet(blueIceURL, normalBlueIce, [randomNum(2, 10), 32, 32], [randomNum(65, 70), randomNum(0, 2 * Math.PI)]);
+scene.add(blueIce.planetBody);
+const encrustedGem = new Planet(encrustedGemURL, normalEncrustedGem, [randomNum(2, 10), 32, 32], [randomNum(95, 105), randomNum(0, 2 * Math.PI)]);
+scene.add(encrustedGem.planetBody);
+const jungleFloor = new Planet(jungleFloorURL, normalJungleFloor, [randomNum(2, 10), 32, 32], [randomNum(130, 145), randomNum(0, 2 * Math.PI)]);
+scene.add(jungleFloor.planetBody);
+const lava = new Planet(lavaURL, normalLava, [randomNum(20, 30), 32, 32], [randomNum(170, 185), randomNum(0, 2 * Math.PI)]);
+scene.add(lava.planetBody);
+// var moon = new Planet(moonImgURL, normalMoonImgUrl, [3, 32, 32], [0, 0], 0.01, [0, 1, 0], 0, 0);
+// scene.add(moon.planetBody);
+const rock = new Planet(rockURL, normalRock, [randomNum(2, 10), 32, 32], [randomNum(210, 225), randomNum(0, 2 * Math.PI)]);
+scene.add(rock.planetBody);
+const seaRock = new Planet(seaRockURL, normalSeaRock, [randomNum(2, 10), 32, 32], [randomNum(250, 270), randomNum(0, 2 * Math.PI)]);
+scene.add(seaRock.planetBody);
+const sun = new Planet(sunURL, null, [50, 32, 32], [0, 0], 0.002);
+scene.add(sun.planetBody);
+
+//#endregion
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
-  moon.rotation.x += 0.05;
-  moon.rotation.y += 0.075;
-  moon.rotation.z += 0.05;
-
-  frank.rotation.y += 0.01;
-  frank.rotation.z += 0.01;
+  //moon.rotation.x += 0.05;
+  //moon.rotation.y += 0.075;
+  //moon.rotation.z += 0.05;
 
   camera.position.z = t * -0.01;
   camera.position.x = t * -0.0002;
@@ -129,14 +183,22 @@ function moveCamera() {
 }
 document.body.onscroll = moveCamera;
 
+function movePlanet(planet) {
+  planet.rotatePlanet();
+  planet.orbitPlanet();
+}
 
 //game loop
 function animate() {
   requestAnimationFrame(animate);
-  torus.rotation.x += 0.01;
-  torus.rotation.y += 0.01;
-  torus.rotation.z += 0.01;
-
+  movePlanet(alienFlesh);
+  movePlanet(blueIce);
+  movePlanet(encrustedGem);
+  movePlanet(jungleFloor);
+  movePlanet(lava);
+  movePlanet(rock);
+  movePlanet(seaRock);
+  sun.rotatePlanet();
   controls.update();
   renderer.render(scene, camera);
 }
