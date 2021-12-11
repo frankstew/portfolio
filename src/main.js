@@ -1,7 +1,9 @@
-//todo: info & resume link & dropdown navbar (do I really need it?)
+//todo: info & resume link & dropdown navbar (do I really need it?) add hover colour to navbar
+// todo: add transitioning textbox for about me info (so they can see the planets before it gets covered with text)
 // todo: fix page height so no scrollbars( get rid of scrollbar)
 // todo: planet sized and distances
-import '../styles/style.css'
+// todo: get rid of !important for stopping cursor change when button hover
+//todo: remove this: import '../styles/style.css'
 import Planet from './planetModel.js'
 import moonImgURL from '../images/Planets/Moon/Moon/moon.jpg';
 import normalMoonImgUrl from '../images/Planets/Moon/Moon/normalMoon.png';
@@ -210,7 +212,21 @@ function animate() {
   sun.rotatePlanet();
   // controls.update();
   camera.position.setZ(600);
+  camera.position.setY(100);
   renderer.render(scene, camera);
 }
 
 animate();
+
+
+// event handlers
+var aboutMeBtn = document.getElementById("about_me_button");
+aboutMeBtn.onclick = () => {
+  document.querySelector(".bio").classList.toggle("collapsed");
+  aboutMeBtn.style.opacity = 0;
+  aboutMeBtn.disabled = true;
+  aboutMeBtn.classList.toggle("hidden");
+}
+
+
+
