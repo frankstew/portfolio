@@ -5,17 +5,41 @@ function randomNum(min, max) {
   return Math.random() * (max - min) + min;
 }
 
+
 class Planet {
-    constructor(textureURL, normalMapURL, size, location, rotationSpeed = randomNum(0.0001, 0.05), rotationDirection = [Math.random(), Math.random(), Math.random()], orbitSpeed = randomNum(0.001, 0.01), orbitDirection = Math.random() < 0.5 ? -1 : 1) {
+    constructor(textureURL, normalMapURL, size, location, rotationSpeed = randomNum(0.0001, 0.05), rotationDirection = null , orbitSpeed = randomNum(0.001, 0.01), orbitDirection = Math.random() < 0.5 ? -1 : 1) {
         this.radius = location[0];
         this.initialPolarAngle = location[1];
         this.planetBody = this.createPlanet(textureURL, normalMapURL, size, this.cartesianFromPolar(this.radius, this.initialPolarAngle));
         this.rotationSpeed = rotationSpeed;
-        this.rotationDirection = rotationDirection;
+
+        this.setRotationDirection(rotationDirection);
+
         this.orbitSpeed = orbitSpeed;
         this.orbitDirection = orbitDirection;
     }
 
+    setRotationDirection = function(rotationDirection) {
+        if (rotationDirection == null) {
+            var rotDirIndex = Math.floor(randomNum(1, 4));
+            if (rotDirIndex == 1) {
+                this.rotationDirection = [1, 0, 0];
+            }
+            else if (rotDirIndex == 2) {
+                this.rotationDirection = [0, 1, 0];
+            }
+            else this.rotationDirection = [0, 0, 1];
+        }
+        else {
+            this.rotationDirection = rotationDirection;
+        }
+        if 
+        (Math.random() < 0.5) {
+            this.rotationDirection[0] *= -1;
+            this.rotationDirection[1] *= -1;
+            this.rotationDirection[2] *= -1;
+        }
+    }
 
     cartesianFromPolar = function(radius, angle) {
         // angle in radians

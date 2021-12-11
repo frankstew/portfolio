@@ -1,4 +1,6 @@
-//todo: info & resume link (hamburger menu??)
+//todo: info & resume link & dropdown navbar (do I really need it?)
+// todo: fix page height so no scrollbars( get rid of scrollbar)
+// todo: planet sized and distances
 import '../styles/style.css'
 import Planet from './planetModel.js'
 import moonImgURL from '../images/Planets/Moon/Moon/moon.jpg';
@@ -37,6 +39,7 @@ const scene = new THREE.Scene();
 
 // #region camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.setZ(100);
 //#endregion
 
 
@@ -79,6 +82,8 @@ const ambientLight = new THREE.AmbientLight(0xffffff);
 ambientLight.position.set(5,5,5);
 scene.add(ambientLight);
 
+var p = document.getElementById("work");
+console.log(p);
 //light helpers
 
 //pointlight helper shows us where a point light is
@@ -89,8 +94,8 @@ scene.add(ambientLight);
 
 // scene.add(lightHelper, gridHelper);
 // todo: not working??
-const controls = new OrbitControls(camera, renderer.domElement);
-scene.add(controls);
+// const controls = new OrbitControls(camera, renderer.domElement);
+// scene.add(controls);
 
 //#region stars
 // todo: change to points and far away
@@ -177,9 +182,13 @@ function moveCamera() {
   //moon.rotation.y += 0.075;
   //moon.rotation.z += 0.05;
 
-  camera.position.z = t * -0.01;
-  camera.position.x = t * -0.0002;
-  camera.position.y = t * -0.0002;
+  if (camera.position.z > 20 || camera.position.z < -20) {
+    return;
+  }
+  else {
+    camera.position.z = t * -0.01;
+  }
+  console.log(camera.position);
 }
 document.body.onscroll = moveCamera;
 
@@ -199,7 +208,8 @@ function animate() {
   movePlanet(rock);
   movePlanet(seaRock);
   sun.rotatePlanet();
-  controls.update();
+  // controls.update();
+  camera.position.setZ(600);
   renderer.render(scene, camera);
 }
 
