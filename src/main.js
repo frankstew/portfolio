@@ -1,9 +1,8 @@
-//todo: info & resume link & dropdown navbar (do I really need it?) add hover colour to navbar
-// todo: add transitioning textbox for about me info (so they can see the planets before it gets covered with text)
+//todo: add bio
 // todo: fix page height so no scrollbars( get rid of scrollbar)
 // todo: planet sized and distances
+// todo: add dropdown scrollbar (do I really need it? makes it purer, kihnda more peaceful)
 // todo: get rid of !important for stopping cursor change when button hover
-//todo: remove this: import '../styles/style.css'
 import Planet from './planetModel.js'
 import moonImgURL from '../images/Planets/Moon/Moon/moon.jpg';
 import normalMoonImgUrl from '../images/Planets/Moon/Moon/normalMoon.png';
