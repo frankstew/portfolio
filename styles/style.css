@@ -54,7 +54,7 @@ body
   font-weight: 100;
   overflow: hidden;
   transition: max-height 2s ease-out;
-  max-height: 50%;
+  max-height: 150%;
 }
 
 .bio p {
