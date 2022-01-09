@@ -227,5 +227,15 @@ aboutMeBtn.onclick = () => {
   aboutMeBtn.classList.toggle("hidden");
 }
 
+// L O L keeps the transition the same speed for all window sizes
+var bio = document.querySelector(".bio");
+// 1.5 b/c max-height goes to 150% when expanded, 144 b/c bio is 288 px when expanded / 2s expansion time
+let time = (window.innerHeight * 1.5) / 144; // distance / speed = time 
+// 144px/s is 288px/2s, 288px is roughly the size of the bio when expanded on jan 8 2022
+
+// set transition time based of speed that I want (288 px/ 2s = 144px/s)
+// its not perfect, but it is closer, maybe figure it out more another time l9r
+bio.style.transition = "max-height " + time.toString() + "s ease-out";
+
 
 
