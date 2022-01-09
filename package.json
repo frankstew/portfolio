@@ -6,7 +6,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "test-build": "vite build && vite preview",
-    "help": "node -e 'console.log(\"deploy: npm run deploy -- <double quote>commit message<double quote>\")'",
+    "help": "node -e 'console.log(\"deploy: npm run deploy -- <single or double quote>commit message<single or double quote>\")'",
     "deploy": "git add . && git commit -m",
     "postdeploy": "git push -u origin main && git push heroku main"
   },
