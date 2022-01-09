@@ -6,7 +6,8 @@
     "build": "vite build",
     "serve": "vite preview",
     "test-build": "vite build && vite preview",
-    "deploy": "git add . && git commit -m \"$MESSAGE\" && git push -u origin main && git push heroku main"
+    "deploy": "git add . && git commit -m",
+    "postdeploy": "git push -u origin main && git push heroku main"
   },
   "devDependencies": {
     "vite": "^2.6.14"
