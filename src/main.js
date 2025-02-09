@@ -7,8 +7,8 @@ import Planet from './planetModel.js'
 import moonImgURL from '../images/Planets/Moon/Moon/moon.jpg';
 import normalMoonImgUrl from '../images/Planets/Moon/Moon/normalMoon.png';
 
-import alienFleshURL from '../public/images/Planets/Alien_Flesh_002/Alien Flesh 002/Alien_Flesh_002_COLOR.jpg';
-import normalAlienFlesh from '../public/images/Planets/Alien_Flesh_002/Alien Flesh 002/Alien_Flesh_002_NRM.jpg';
+import alienFleshURL from '../public/images/Planets/Alien_Flesh_002/Alien Flesh 002/Alien_flesh_002_COLOR.jpg';
+import normalAlienFlesh from '../public/images/Planets/Alien_Flesh_002/Alien Flesh 002/Alien_flesh_002_NRM.jpg';
 
 import blueIceURL from '../public/images/Planets/Blue_Ice_001/Blue_Ice_001_SD/Blue_Ice_001_COLOR.jpg';
 import normalBlueIce from '../public/images/Planets/Blue_Ice_001/Blue_Ice_001_SD/Blue_Ice_001_NORM.jpg';
