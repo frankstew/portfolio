@@ -22,7 +22,7 @@ import normalJungleFloor from '../public/images/Planets/Jungle_Floor_001/Jungle_
 import lavaURL from '../public/images/Planets/Lava_006/Lava_006_SD/Lava_006_basecolor.jpg';
 import normalLava from '../public/images/Planets/Lava_006/Lava_006_SD/Lava_006_normal.jpg';
 
-import rockURL from '../public/images/Planets/Rock_038/Rock_038_SD/Rock_038_basecolor.jpg';
+import rockURL from '../public/images/Planets/Rock_038/Rock_038_SD/Rock_038_baseColor.jpg';
 import normalRock from '../public/images/Planets/Rock_038/Rock_038_SD/Rock_038_normal.jpg';
 
 import seaRockURL from '../public/images/Planets/Sea_Rock_001/Sea_Rock_001_SD/Sea_Rock_001_BaseColor.jpg';
