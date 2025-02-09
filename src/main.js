@@ -4,8 +4,8 @@
 // todo: add dropdown scrollbar (do I really need it? makes it purer, kihnda more peaceful)
 // todo: get rid of !important for stopping cursor change when button hover
 import Planet from './planetModel.js'
-import moonImgURL from '../images/Planets/Moon/Moon/moon.jpg';
-import normalMoonImgUrl from '../images/Planets/Moon/Moon/normalMoon.png';
+import moonImgURL from '../public/images/Planets/Moon/Moon/moon.jpg';
+import normalMoonImgUrl from '../public/images/Planets/Moon/Moon/normalMoon.png';
 
 import alienFleshURL from '../public/images/Planets/Alien_Flesh_002/Alien Flesh 002/Alien_flesh_002_COLOR.jpg';
 import normalAlienFlesh from '../public/images/Planets/Alien_Flesh_002/Alien Flesh 002/Alien_flesh_002_NRM.jpg';
