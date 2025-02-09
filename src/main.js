@@ -7,28 +7,28 @@ import Planet from './planetModel.js'
 import moonImgURL from '../images/Planets/Moon/Moon/moon.jpg';
 import normalMoonImgUrl from '../images/Planets/Moon/Moon/normalMoon.png';
 
-import alienFleshURL from '../images/Planets/Alien_Flesh_002/Alien Flesh 002/Alien_Flesh_002_COLOR.jpg';
-import normalAlienFlesh from '../images/Planets/Alien_Flesh_002/Alien Flesh 002/Alien_Flesh_002_NRM.jpg';
+import alienFleshURL from '../public/images/Planets/Alien_Flesh_002/Alien Flesh 002/Alien_Flesh_002_COLOR.jpg';
+import normalAlienFlesh from '../public/images/Planets/Alien_Flesh_002/Alien Flesh 002/Alien_Flesh_002_NRM.jpg';
 
-import blueIceURL from '../images/Planets/Blue_Ice_001/Blue_Ice_001_SD/Blue_Ice_001_COLOR.jpg';
-import normalBlueIce from '../images/Planets/Blue_Ice_001/Blue_Ice_001_SD/Blue_Ice_001_NORM.jpg';
+import blueIceURL from '../public/images/Planets/Blue_Ice_001/Blue_Ice_001_SD/Blue_Ice_001_COLOR.jpg';
+import normalBlueIce from '../public/images/Planets/Blue_Ice_001/Blue_Ice_001_SD/Blue_Ice_001_NORM.jpg';
 
-import encrustedGemURL from '../images/Planets/Encrusted_Gems_002/Encrusted_Gems_002_SD/Encrusted_Gems_002_COLOR.jpg';
-import normalEncrustedGem from '../images/Planets/Encrusted_Gems_002/Encrusted_Gems_002_SD/Encrusted_Gems_002_NORM.jpg';
+import encrustedGemURL from '../public/images/Planets/Encrusted_Gems_002/Encrusted_Gems_002_SD/Encrusted_Gems_002_COLOR.jpg';
+import normalEncrustedGem from '../public/images/Planets/Encrusted_Gems_002/Encrusted_Gems_002_SD/Encrusted_Gems_002_NORM.jpg';
 
-import jungleFloorURL from '../images/Planets/Jungle_Floor_001/Jungle_Floor_001_SD/Jungle_Floor_001_basecolor.jpg';
-import normalJungleFloor from '../images/Planets/Jungle_Floor_001/Jungle_Floor_001_SD/Jungle_Floor_001_normal.jpg';
+import jungleFloorURL from '../public/images/Planets/Jungle_Floor_001/Jungle_Floor_001_SD/Jungle_Floor_001_basecolor.jpg';
+import normalJungleFloor from '../public/images/Planets/Jungle_Floor_001/Jungle_Floor_001_SD/Jungle_Floor_001_normal.jpg';
 
-import lavaURL from '../images/Planets/Lava_006/Lava_006_SD/Lava_006_basecolor.jpg';
-import normalLava from '../images/Planets/Lava_006/Lava_006_SD/Lava_006_normal.jpg';
+import lavaURL from '../public/images/Planets/Lava_006/Lava_006_SD/Lava_006_basecolor.jpg';
+import normalLava from '../public/images/Planets/Lava_006/Lava_006_SD/Lava_006_normal.jpg';
 
-import rockURL from '../images/Planets/Rock_038/Rock_038_SD/Rock_038_basecolor.jpg';
-import normalRock from '../images/Planets/Rock_038/Rock_038_SD/Rock_038_normal.jpg';
+import rockURL from '../public/images/Planets/Rock_038/Rock_038_SD/Rock_038_basecolor.jpg';
+import normalRock from '../public/images/Planets/Rock_038/Rock_038_SD/Rock_038_normal.jpg';
 
-import seaRockURL from '../images/Planets/Sea_Rock_001/Sea_Rock_001_SD/Sea_Rock_001_BaseColor.jpg';
-import normalSeaRock from '../images/Planets/Sea_Rock_001/Sea_Rock_001_SD/Sea_Rock_001_Normal.jpg';
+import seaRockURL from '../public/images/Planets/Sea_Rock_001/Sea_Rock_001_SD/Sea_Rock_001_BaseColor.jpg';
+import normalSeaRock from '../public/images/Planets/Sea_Rock_001/Sea_Rock_001_SD/Sea_Rock_001_Normal.jpg';
 
-import sunURL from '../images/Planets/Sun/Sun/Sun.jpg';
+import sunURL from '../public/images/Planets/Sun/Sun/Sun.jpg';
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
